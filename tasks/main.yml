@@ -1,0 +1,24 @@
+---
+# tasks file for qualcomm
+- name: creating the directory /oracle-db
+  file: 
+    path: /oracle-db
+    state: directory
+    
+- name: creating the test file within /oracle-db
+  copy:
+    content:  "This is from ansible roles \n"
+    dest: /oracle-db/testfile
+
+- name: copy the /etc/passwd file into oracle-db
+  copy:
+    src:  /etc/passwd
+    dest: /oracle-db/mypasswd
+
+- name: Create the server report
+  template: 
+    src:  server.j2
+    dest: /oracle-db/server-report.txt
+
+
+  
